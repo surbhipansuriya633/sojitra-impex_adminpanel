@@ -1,0 +1,257 @@
+.dashboard-container {
+    display: flex;
+    min-height: 100vh;
+    background-color: #1a1a1a;
+    color: #ffffff;
+    font-family: "Segoe UI", "Roboto", sans-serif;
+}
+
+/* Sidebar Styles */
+.sidebar {
+    width: 280px;
+    background-color: #2a2a2a;
+    padding: 24px 0;
+    border-right: 1px solid #3a3a3a;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    overflow-y: auto;
+    transition: transform 0.3s ease;
+    z-index: 2000;
+    /* stays above overlay */
+}
+
+.sidebar-item {
+    display: flex;
+    align-items: center;
+    padding: 12px 24px;
+    margin: 4px 0;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    color: #b0b0b0;
+}
+
+.sidebar-item:hover {
+    background-color: #3a3a3a;
+    color: #ffffff;
+}
+
+.sidebar-item.current {
+    background-color: #3a3a3a;
+    color: #ffffff;
+    border-right: 3px solid #4a9eff;
+}
+
+.sidebar-icon {
+    margin-right: 12px;
+    font-size: 18px;
+    width: 24px;
+    text-align: center;
+}
+
+.content-header h1 {
+    font-size: 32px;
+    font-weight: 600;
+    margin: 0 0 32px 0;
+    color: #ffffff;
+}
+
+/* Form Styles */
+.product-form {
+    max-width: 800px;
+}
+
+.form-group {
+    margin-bottom: 24px;
+}
+
+/* Added form-row styles for side-by-side form fields */
+.form-row {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.form-row .form-group {
+    flex: 1;
+    margin-bottom: 0;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 16px;
+    font-weight: 500;
+    color: #ffffff;
+}
+
+.form-input,
+.form-textarea,
+.form-select {
+    width: 100%;
+    padding: 12px 16px;
+    background-color: #2a2a2a;
+    border: 1px solid #3a3a3a;
+    border-radius: 8px;
+    color: #ffffff;
+    font-size: 16px;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    box-sizing: border-box;
+}
+
+/* Added file input styles */
+.form-file {
+    width: 100%;
+    padding: 12px 16px;
+    background-color: #2a2a2a;
+    border: 1px solid #3a3a3a;
+    border-radius: 8px;
+    color: #ffffff;
+    font-size: 16px;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+.form-file::-webkit-file-upload-button {
+    background-color: #4a9eff;
+    color: #ffffff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    margin-right: 12px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.form-file::-webkit-file-upload-button:hover {
+    background-color: #3a8eef;
+}
+
+/* Added checkbox styles */
+.checkbox-group {
+    display: flex;
+    align-items: center;
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-size: 16px;
+    color: #ffffff;
+}
+
+.form-checkbox {
+    width: 18px;
+    height: 18px;
+    margin-right: 12px;
+    accent-color: #4a9eff;
+    cursor: pointer;
+}
+
+.form-input:focus,
+.form-textarea:focus,
+.form-select:focus,
+.form-file:focus {
+    outline: none;
+    border-color: #4a9eff;
+    box-shadow: 0 0 0 3px rgba(74, 158, 255, 0.1);
+}
+
+/* Form Actions */
+.form-actions {
+    display: flex;
+    gap: 16px;
+    margin-top: 32px;
+}
+
+.btn-cancel,
+.btn-submit {
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: none;
+}
+
+.btn-cancel {
+    background-color: #3a3a3a;
+    color: #ffffff;
+}
+
+.btn-cancel:hover {
+    background-color: #4a4a4a;
+}
+
+.btn-submit {
+    background-color: #4a9eff;
+    color: #ffffff;
+}
+
+.btn-submit:hover {
+    background-color: #3a8eef;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(74, 158, 255, 0.3);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .dashboard-container {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        transform: translateX(-100%);
+        position: fixed;
+        width: 240px;
+        /* smaller on mobile */
+    }
+
+    .sidebar.open {
+        transform: translateX(0);
+    }
+
+    .main-content {
+        margin-left: 0 !important;
+        /* ✅ full width on mobile */
+        height: auto;
+        /* padding: 20px; */
+    }
+
+    /* Overlay for mobile */
+    .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 1500;
+    }
+
+    /* Added responsive styles for form rows */
+    .form-row {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .form-row .form-group {
+        margin-bottom: 24px;
+    }
+
+    .form-actions {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 768px) {
+    .form-row {
+        flex-direction: column;
+        gap: 12px;
+    }
+}
